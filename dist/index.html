@@ -6,7 +6,8 @@
 <body>
     <div id="navbar"></div>
     <h1>Welcome!</h1>
-    <div id="app">{{ message }}</div>
+    <!--declaratively rendering and directive binding -->
+    <div id="app"><span v-bind:title="title">{{ message }}</span></div>
     <script type="text/javascript" src="bundle.js"></script>
 </body>
 </html>

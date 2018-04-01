@@ -4,7 +4,8 @@ import NavBar from './components/nav';
 new Vue({
     el: '#app',
     data: {
-        message: 'Hello Vue!'
+        message: 'Hello Vue!',
+        title: 'You visit this one on ' + new Date().toLocaleString()
     }
 });
 
