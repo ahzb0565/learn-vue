@@ -12,7 +12,7 @@
         <p v-if="heroes">Heroes as below</p>
         <p v-if="!heroes">No heroes here</p>
         <ul>
-            <li v-for="hero in heroes">Name: {{ hero.name }}, Age: {{ hero.age }}</li>
+            <hero-details v-for="hero in heroes" v-bind:hero="hero" v-bind:key="hero.id"></hero-details>
         </ul>
         Your comments: <input v-model="comments" placeholder="What you wanna say?">
         You entered: <span>{{ comments }}</span>
