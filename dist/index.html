@@ -14,6 +14,8 @@
         <ul>
             <li v-for="hero in heroes">Name: {{ hero.name }}, Age: {{ hero.age }}</li>
         </ul>
+        Your comments: <input v-model="comments" placeholder="What you wanna say?">
+        You entered: <span>{{ comments }}</span>
     </div>
     <script type="text/javascript" src="bundle.js"></script>
 </body>
