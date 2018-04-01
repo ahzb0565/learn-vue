@@ -1,7 +1,8 @@
-function sayHi(){
-    var hello = document.createElement('div');
-    hello.innerHTML = 'Hi Js!';
-    return hello;
-}
+import Vue from 'vue';
 
-document.body.appendChild(sayHi());
+new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue!'
+    }
+});
