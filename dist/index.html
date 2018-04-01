@@ -7,7 +7,14 @@
     <div id="navbar"></div>
     <h1>Welcome!</h1>
     <!--declaratively rendering and directive binding -->
-    <div id="app"><span v-bind:title="title">{{ message }}</span></div>
+    <div id="app">
+        <span v-bind:title="title">{{ message }}</span>
+        <p v-if="heroes">Heroes as below</p>
+        <p v-if="!heroes">No heroes here</p>
+        <ul>
+            <li v-for="hero in heroes">Name: {{ hero.name }}, Age: {{ hero.age }}</li>
+        </ul>
+    </div>
     <script type="text/javascript" src="bundle.js"></script>
 </body>
 </html>
