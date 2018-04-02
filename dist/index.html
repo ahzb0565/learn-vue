@@ -9,13 +9,15 @@
     <!--declaratively rendering and directive binding -->
     <div id="app">
         <span v-bind:title="title">{{ message }}</span>
-        <p v-if="heroes">Heroes as below</p>
         <p v-if="!heroes">No heroes here</p>
-        <ul>
-            <hero-details v-for="hero in heroes" v-bind:hero="hero" v-bind:key="hero.id"></hero-details>
-        </ul>
-        Your comments: <input v-model="comments" placeholder="What you wanna say?">
-        You entered: <span>{{ comments }}</span>
+        <div v-else-if="heroes">
+            <p>Heroes as below</p>
+            <ul>
+                <hero-details v-for="hero in heroes" v-bind:hero="hero" v-bind:key="hero.id" v-on:remove="removePerson(hero.id)"></hero-details>
+            </ul>
+            </div>
+        Your name: <input v-model="newPerson.name">, age: <input v-model="newPerson.age">
+        <button v-on:click="addPerson">Add</button>
     </div>
     <script type="text/javascript" src="bundle.js"></script>
 </body>
