@@ -6,7 +6,7 @@ Vue.component('hero-details', {
     template: '<li>Name: {{ hero.name }}, age: {{ hero.age }} <button v-on:click="remove">remove</button></li>',
     methods: {
         remove: function(even){
-            this.$emit('remove');
+            this.$emit('remove');  // From parent to child : props, from child to parent: $emit
         }
     }
 })
@@ -31,7 +31,31 @@ var app = new Vue({
     created: function(){
         console.log(`The comments is "${this.comments}" by default`);
     },
+    watch: {
+        // observe properties and react to the properties changes
+        comments: function(oldVar, newVar){
+            console.log(`Comments updated ${oldVar} -> ${newVar}`);
+        },
+        heroes: function(oldVar, newVar){
+            let heroesPrev = oldVar.map(hero => hero.name);
+            let heroesNew = newVar.map(hero => hero.name);
+            console.log(`heroes updated ${heroesPrev} -> ${heroesNew}`);  // TODO: fix me, incorrect
+        }
+    },
+    computed: {
+        // computed properties cached base on their dependencies 
+        reverseMessage: function(){
+            return this.message.split('').reverse().join('');
+        }
+        /*
+        computed caching can use arrow function as below:
+        reverseMessage: vm => ({  // Of cause it can't use 'this', but it can use Vue instande as the first argument
+            vm.reversedMessage = xxxx
+        }) 
+         */
+    },
     methods: {
+        // can't use arrow functions in methods
         addPerson: function(){
             this.heroes.push({
                 id: this.heroes.length,
@@ -52,15 +76,6 @@ var app = new Vue({
         }
     }
 });
-
-app.$watch('comments', function(oldVar, newVar){
-    console.log(`Comments updated ${oldVar} -> ${newVar}`);
-});
-app.$watch('heroes', function(oldVar, newVar){
-    let heroesPrev = oldVar.map(hero => hero.name);
-    let heroesNew = newVar.map(hero => hero.name);
-    console.log(`heroes updated ${heroesPrev} -> ${heroesNew}`);  // TODO: fix me, incorrect
-})
 
 new Vue({
     el: '#navbar',

@@ -8,7 +8,7 @@
     <h1>Welcome!</h1>
     <!--declaratively rendering and directive binding -->
     <div id="app">
-        <span v-bind:title="title">{{ message }}</span>
+        <span v-bind:title="title">{{ message }}</span><br>Reversed: <span>{{ reverseMessage }}</span>
         <p v-if="!heroes">No heroes here</p>
         <div v-else-if="heroes">
             <p>Heroes as below</p>
