@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import NavBar from './components/Nav';
-import HeroList from './components/heroes/HeroList';
+import router from './router';
+import App from './app';
 
 new Vue({
     el: '#navbar',
@@ -10,8 +11,9 @@ new Vue({
 
 new Vue({
     el: '#app',
-    components: { HeroList },
-    template: '<hero-list />'
+    router,
+    components: { App },
+    template: '<App />'
 });
 
 
